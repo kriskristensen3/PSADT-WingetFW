@@ -1,0 +1,3 @@
+﻿**Version 3.0.0 [04/03/2024]**
+- Added the option to run it in user or system mode
+- Initial Public Release.
