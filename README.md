@@ -10,3 +10,4 @@ PSADT-WingetFW is framework for using Winget with PSADT with havning to create a
 Deploy-Application.exe -DeploymentType "Install" -WingetID "Postman.Postman"
 
 ![alt text](https://github.com/kriskristensen3/PSADT-WingetFW/blob/main/Images/exampleInstallCommand01.png?raw=true)
+![alt text](https://github.com/kriskristensen3/PSADT-WingetFW/blob/main/Images/exampleInstallCommand02.png?raw=true)
