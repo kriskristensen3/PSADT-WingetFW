@@ -6,7 +6,7 @@
 
 ## What is PSADT-WingetFW
 
-PSADT-WingetFW is framework for using Winget with PSADT with havning to create a script for each application
+PSADT-WingetFW is framework for using Winget with PSADT without havning to create a script for each application
 ## EXAMPLES
 ### EXAMPLE 1
 ```
