@@ -7,11 +7,14 @@
 ### What is PSADT-WingetFW
 
 PSADT-WingetFW is framework for using Winget with PSADT with havning to create a script for each application
+##EXAMPLES
+###EXAMPLE 1
 ```
 Deploy-Application.exe -DeploymentType "Install" -WingetID "Postman.Postman"
 ```
 
 ![alt text](https://github.com/kriskristensen3/PSADT-WingetFW/blob/main/Images/exampleInstallCommand01.png?raw=true)
+###EXAMPLE 2
 ```
 ServiceUI.exe -process:explorer.exe Deploy-Application.exe -DeploymentType "Install" -WingetID "Neovim.Neovim" -WingetScope '--Scope machine'
 ```
