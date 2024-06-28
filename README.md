@@ -19,3 +19,14 @@ Deploy-Application.exe -DeploymentType "Install" -WingetID "Postman.Postman"
 ServiceUI.exe -process:explorer.exe Deploy-Application.exe -DeploymentType "Install" -WingetID "Neovim.Neovim" -WingetScope '--Scope machine'
 ```
 ![alt text](https://github.com/kriskristensen3/PSADT-WingetFW/blob/main/Images/exampleInstallCommand02.png?raw=true)
+
+## PARAMETERS
+### -DeploymentType
+
+### --WingetCM
+
+### -Mode
+
+### --Scope
+
+### --WingetCM
