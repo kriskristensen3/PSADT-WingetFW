@@ -22,11 +22,56 @@ ServiceUI.exe -process:explorer.exe Deploy-Application.exe -DeploymentType "Inst
 
 ## PARAMETERS
 ### -DeploymentType
+The action to perform. Options: Install, Uninstall.
+```
+Type: String
+Parameter Sets: (All)
+Aliases:
 
-### --WingetCM
+Required: False
+Default value: Install
+```
+
+### -WingetID
+Get the ID from Winget
+```
+Type: String
+Parameter Sets: (All)
+Aliases: Arguments
+
+Required: True
+Default value: None
+```
 
 ### -Mode
+The action to perform. Options: Admin, User.
+```
+Type: String
+Parameter Sets: (All)
+Aliases:
 
-### --Scope
+Required: False
+Default value: Admin
+```
 
-### --WingetCM
+### -WingetScope
+The action to perform. Options: machine, user.
+```
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Default value: None
+```
+
+### -WingetCM
+Add parameters for winget, like: "--override /QN". Or "--custom REBOOT=ReallySuppress"
+```
+Type: String
+Parameter Sets: (All)
+Aliases: Arguments
+
+Required: False
+Default value: None
+```
