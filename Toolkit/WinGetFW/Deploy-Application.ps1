@@ -98,7 +98,8 @@ Param (
     [String]$Mode = 'Admin',
 	[String]$WingetScope  = '',
 	[String]$WingetID = '',
-	[String]$WingetCM = ''
+	[String]$WingetCM = '',
+	[String]$WingetOverride = ''
 )
 
 Try {
@@ -115,12 +116,12 @@ Try {
     ## Variables: Application
     [String]$appVendor = "$WingetID"
     [String]$appName = 'WingetFW'
-    [String]$appVersion = '3.0.1'
+    [String]$appVersion = '3.0.2'
     [String]$appArch = ''
     [String]$appLang = 'EN'
     [String]$appRevision = '01'
     [String]$appScriptVersion = '1.0.0'
-    [String]$appScriptDate = '04/03/2024'
+    [String]$appScriptDate = '01/10/2024'
     [String]$appScriptAuthor = 'Kris Spangenberg'
     ##*===============================================
     ## Variables: Install Titles (Only set here to override defaults set by the toolkit)
@@ -274,8 +275,13 @@ Try {
 					if($ResolveWingetPath){
 						$WingetPath = $ResolveWingetPath[-1].Path
 					}
-					
-					Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM $WingetScope" -WindowStyle 'Hidden'
+					If(($WingetOverride -eq "") -or ($WingetOverride -eq $null)){
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM $WingetScope" -WindowStyle 'Hidden'
+					}Else{
+						Write-Log -Message "override string $($WingetOverride)" -Source 'INSTALLATION' -LogType 'CMTrace'
+						write-Host $WingetOverride
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM --override `"$($WingetOverride)`"  $WingetScope" -WindowStyle 'Hidden'
+					}
 					
 				}
 				Catch {
@@ -299,7 +305,11 @@ Try {
 						$WingetPath = $ResolveWingetPath[-1].Path
 					}
 					
-					Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM $WingetScope" -WindowStyle 'Hidden'
+					If(($WingetOverride -eq "") -or ($WingetOverride -eq $null)){
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM $WingetScope" -WindowStyle 'Hidden'
+					}Else{
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM --override `"$($WingetOverride)`"  $WingetScope" -WindowStyle 'Hidden'
+					}
 					
 				}
 				Catch {
@@ -409,7 +419,11 @@ Try {
 						   $WingetPath = $ResolveWingetPath[-1].Path
 					}
 					
-					Execute-Process -Path "$wingetpath\winget.exe" -Parameters "uninstall $WingetID --silent $WingetCM" -WindowStyle 'Hidden' -ContinueOnError $True
+					If(($WingetOverride -eq "") -or ($WingetOverride -eq $null)){
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "uninstall $WingetID --silent $WingetCM" -WindowStyle 'Hidden' -ContinueOnError $True
+					}Else{
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "uninstall $WingetID --silent $WingetCM --override `"$($WingetOverride)`"" -WindowStyle 'Hidden' -ContinueOnError $True
+					}
 					
 				}
 				Catch {
@@ -433,7 +447,11 @@ Try {
 						   $WingetPath = $ResolveWingetPath[-1].Path
 					}
 					
-					Execute-Process -Path "$wingetpath\winget.exe" -Parameters "uninstall $WingetID --silent $WingetCM" -WindowStyle 'Hidden' -ContinueOnError $True
+					If(($WingetOverride -eq "") -or ($WingetOverride -eq $null)){
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM $WingetScope" -WindowStyle 'Hidden'
+					}Else{
+						Execute-Process -Path "$wingetpath\winget.exe" -Parameters "install $WingetID --silent --accept-source-agreements --accept-package-agreements $WingetCM --override `"$($WingetOverride)`"  $WingetScope" -WindowStyle 'Hidden'
+					}
 					
 				}
 				Catch {
