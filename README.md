@@ -65,8 +65,19 @@ Required: False
 Default value: None
 ```
 
+### -WingetOverride
+Add parameters for winget, like: "/QN". Or "REBOOT=ReallySuppress"
+```
+Type: String
+Parameter Sets: (All)
+Aliases: Arguments
+
+Required: False
+Default value: None
+```
+
 ### -WingetCM
-Add parameters for winget, like: "--override /QN". Or "--custom REBOOT=ReallySuppress"
+Add parameters for winget, like: "--custom /QN". Or "--custom REBOOT=ReallySuppress"
 ```
 Type: String
 Parameter Sets: (All)
